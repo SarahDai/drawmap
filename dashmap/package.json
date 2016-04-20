@@ -1,0 +1,23 @@
+{
+  "name": "-y",
+  "version": "1.0.0",
+  "description": "Final Project - Interactive Data Visualization  \r ===",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beflew/Dallas_RMS_Incidents.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beflew/Dallas_RMS_Incidents/issues"
+  },
+  "homepage": "https://github.com/beflew/Dallas_RMS_Incidents#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
+}
