@@ -20,9 +20,10 @@ function mapping(map, offense, incidents, time, result) {
      * 22223,02:05:24,114.135834,22.577433,0,20
      * 22223,11:37:32,114.135681,22.566566,1,59
      */
+    
 
-    // proj4.defs("EPSG:2276", "+proj=lcc +lat_1=33.96666666666667 +lat_2=32.13333333333333 +lat_0=31.66666666666667 +lon_0=-98.5 +x_0=600000 +y_0=2000000.0001016 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs");
-    // proj4.defs("EPSG:4326", "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs");
+    proj4.defs("EPSG:2276", "+proj=lcc +lat_1=33.96666666666667 +lat_2=32.13333333333333 +lat_0=31.66666666666667 +lon_0=-98.5 +x_0=600000 +y_0=2000000.0001016 +ellps=GRS80 +datum=NAD83 +to_meter=0.3048006096012192 +no_defs");
+    proj4.defs("EPSG:4326", "+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs");
 
     var tip = d3.tip()
         .attr('class', 'd3-tip')
