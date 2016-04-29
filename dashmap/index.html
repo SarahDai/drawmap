@@ -38,55 +38,60 @@
         // var height = 2000;
 
         var svg = d3.select("#dash-map").append("svg")
+                .attr("id", "dash-svg")
                 .attr("width", width + margin.left + margin.right)
                 .attr("height", height + margin.top + margin.bottom)
 
 
         $("#overlay").show();
 
-        var file = "data/output.json";
-        // var file = "data/output_original.json";
+        // var file = "data/output.json";
+        var file = "data/output_taxi.json";
 
         d3.json(file, function (error, data) {
 
-            // console.log(data);
+            data.forEach(function (singlePath) {
 
-            data.forEach(function (d) {
+                const pathData = getLineArr(singlePath.path[0].points);
 
-                var count = Math.random() * 60;
+                // console.log(pathData);
 
-                if (count > 45) {
-                    var line = svg.append('svg:path')
-                            .attr('d', lineGen(d.path))
-                            .attr('stroke', '#66ccff')
-                            .attr('stroke-width', 5)
-                            .attr('fill', 'none');
-                }
+                pathData.forEach(function (d) {
 
+                    var count = Math.random() * 60;
 
-                else if (count > 30) {
-                    var line = svg.append('svg:path')
-                            .attr('d', lineGen(d.path))
-                            .attr('stroke', '#ff9980')
-                            .attr('stroke-width', 5)
-                            .attr('fill', 'none');
-                }
+                    if (count > 45) {
+                        var line = svg.append('svg:path')
+                                .attr('d', lineGen(d))
+                                .attr('stroke', '#66ccff')
+                                .attr('stroke-width', 5)
+                                .attr('fill', 'none');
+                    }
 
 
-                else if (count >= 15) {
-                    var line = svg.append('svg:path')
-                            .attr('d', lineGen(d.path))
-                            .attr('stroke', '#80ff80')
-                            .attr('stroke-width', 5)
-                            .attr('fill', 'none');
-                } else {
-                    var line = svg.append('svg:path')
-                            .attr('d', lineGen(d.path))
-                            .attr('stroke', ' #d1d1e0')
-                            .attr('stroke-width', 5)
-                            .attr('fill', 'none');
-                }
+                    else if (count > 30) {
+                        var line = svg.append('svg:path')
+                                .attr('d', lineGen(d))
+                                .attr('stroke', '#ff9980')
+                                .attr('stroke-width', 5)
+                                .attr('fill', 'none');
+                    }
 
+
+                    else if (count >= 15) {
+                        var line = svg.append('svg:path')
+                                .attr('d', lineGen(d))
+                                .attr('stroke', '#80ff80')
+                                .attr('stroke-width', 5)
+                                .attr('fill', 'none');
+                    } else {
+                        var line = svg.append('svg:path')
+                                .attr('d', lineGen(d))
+                                .attr('stroke', ' #d1d1e0')
+                                .attr('stroke-width', 5)
+                                .attr('fill', 'none');
+                    }
+                })
 
             });
 
@@ -99,6 +104,41 @@
                     .on("click", svgToCanvas);
 
         });
+
+        // get an 2d array
+        // [[ {x: , y: }, { x: , y:  } ][...] ...]
+        function getLineArr(points) {
+
+            // what if only one point?
+
+            var l = 0;
+            var r = 1;
+
+            const resArr = [];
+
+            while (r < points.length) {
+
+                const tempArr = [];
+                var temp1 = {};
+                temp1.x = points[l].lat;
+                temp1.y = points[l].lon;
+                tempArr.push(temp1);
+
+                var temp2 = {};
+                temp2.x = points[r].lat;
+                temp2.y = points[r].lon;
+                tempArr.push(temp2);
+
+                resArr.push(tempArr);
+
+                l++;
+                r++;
+
+            }
+
+            return resArr;
+
+        }
 
         function getCanvLat(lat) {
             return width / (maxminLatLon.maxLat - maxminLatLon.minLat ) * ( lat - maxminLatLon.minLat );
