@@ -7,12 +7,18 @@
     <title>Map</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link href="css/eclipse.css" rel="stylesheet" type="text/css">
+    <link href="css/export.css" rel="stylesheet" type="text/css">
+    <link href="css/legend.css" rel="stylesheet" type="text/css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/rgbcolor.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/StackBlur.js"></script>
     <script type="text/javascript" src="http://gabelerner.github.io/canvg/canvg.js"></script>
+
+    <script type="text/javascript" src="js/d3.legend.js"></script>
+
 
 </head>
 <body>
@@ -40,7 +46,27 @@
         var svg = d3.select("#dash-map").append("svg")
                 .attr("id", "dash-svg")
                 .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
+                .attr("height", height + margin.top + margin.bottom);
+
+        var legendData = svg.selectAll('.legendData')
+                .data([{'name': '>45', 'color': '#66ccff'},
+                    {'name': '>30', 'color': '#ff9980'},
+                    {'name': '>15', 'color': '#80ff80'},
+                    {'name': '>0', 'color': '#d1d1e0'}])
+                .enter().append('g')
+                .attr('class', 'legendData')
+                .attr('data-legend', function (d) {
+                    return d.name;
+                })
+                .attr('data-legend-color', function (d) {
+                    return d.color;
+                });
+
+        var legend = svg.append("g")
+                .attr("class", "legend")
+                .attr("transform", "translate(50,30)")
+                .style("font-size", "12px")
+                .call(d3.legend)
 
 
         $("#overlay").show();
@@ -54,13 +80,11 @@
 
                 const pathData = getLineArr(singlePath.path[0].points);
 
-                // console.log(pathData);
-
                 pathData.forEach(function (d) {
 
                     var count = Math.random() * 60;
 
-                    if (count > 45) {
+                    if (count >= 45) {
                         var line = svg.append('svg:path')
                                 .attr('d', lineGen(d))
                                 .attr('stroke', '#66ccff')
@@ -69,7 +93,7 @@
                     }
 
 
-                    else if (count > 30) {
+                    else if (count >= 30) {
                         var line = svg.append('svg:path')
                                 .attr('d', lineGen(d))
                                 .attr('stroke', '#ff9980')
@@ -100,6 +124,7 @@
             // we only support export after the page finish render
             d3.select("#export-btn")
                     .append("button")
+                    .attr('class', 'btn btn-primary')
                     .html("Export")
                     .on("click", svgToCanvas);
 
@@ -179,18 +204,14 @@
 </div>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3 sidebar">
+        <div id="export-btn"></div>
+        <div class="col-md-1 sidebar">
             <ul class="ps-nav nav nav-stacked">
-                <li>test1</li>
-                <li>test2</li>
-                <li>test3</li>
+                <!-- This place is for sidebar -->
             </ul>
-            <div id="export-btn">
-
-            </div>
         </div>
 
-        <div class="col-md-9 main">
+        <div class="col-md-10 main">
             <div id="dash-map">
 
             </div>
