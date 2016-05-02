@@ -72,8 +72,9 @@
 
         $("#overlay").show();
 
-        // var file = "data/output.json";
-        var file = "data/output_taxi.json";
+        // var file = "data/output_taxi.json";
+        // var file = "data/output_taxi_0_3304.json";
+        var file = "data/output_taxi_go.json";
 
         d3.json(file, function (error, data) {
 
@@ -83,49 +84,19 @@
 
                 pathData.forEach(function (d) {
 
-                    var count = Math.random() * 60;
-
-                    /*if (count >= 45) {
-                     var line = svg.append('svg:path')
-                     .attr('d', lineGen(d))
-                     .attr('stroke', '#66ccff')
-                     .attr('stroke-width', 5)
-                     .attr('fill', 'none');
-                     }
-
-
-                     else if (count >= 30) {
-                     var line = svg.append('svg:path')
-                     .attr('d', lineGen(d))
-                     .attr('stroke', '#ff9980')
-                     .attr('stroke-width', 5)
-                     .attr('fill', 'none');
-                     }
-
-
-                     else if (count >= 15) {
-                     var line = svg.append('svg:path')
-                     .attr('d', lineGen(d))
-                     .attr('stroke', '#80ff80')
-                     .attr('stroke-width', 5)
-                     .attr('fill', 'none');
-                     } else {
-                     var line = svg.append('svg:path')
-                     .attr('d', lineGen(d))
-                     .attr('stroke', ' #d1d1e0')
-                     .attr('stroke-width', 5)
-                     .attr('fill', 'none');
-                     }*/
-
                     var line = svg.append('svg:path')
                             .attr('d', lineGen(d))
                             .attr('stroke', function () {
-                                if (singlePath.path[0].count >= 45) {
-                                    return '#ff9980';
+                                if (singlePath.path[0].count >= 61) {
+                                    return '#ff3300';
                                 } else if (singlePath.path[0].count >= 30) {
+                                    return '#e600e6';
+                                }else if (singlePath.path[0].count >= 11) {
                                     return '#80ff80';
+                                }else if (singlePath.path[0].count >= 1) {
+                                    return '#00ff00';
                                 } else {
-                                    return '#d1d1e0';
+                                    return '#999966';
                                 }
                             })
                             .attr('stroke-width', 5)
