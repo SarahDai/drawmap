@@ -1,5 +1,5 @@
 #overlay {
-    background-color: rgba(100, 0, 0, 0.8);
+    background-color: rgb(100, 0, 0);
     z-index: 999;
     position: absolute;
     left: 0;
@@ -11,6 +11,7 @@
 
 #read-data-info {
     font-size: 40px;
+    color: cornsilk;
     margin-left: 200px;
     margin-top: 300px;
 }
