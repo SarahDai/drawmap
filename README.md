@@ -4,7 +4,7 @@ Analyze the Taxicab GPS data to count on each taxi’s influence on the traffic 
 #Get the JSON file for plotting
 1. Get the map GPS data for the intereted city from the [*OpenStreetMap*](http://www.openstreetmap.org/export#map=13/22.5750/114.1050) by defining the bounding box of the city and export into a xml file.
 2. Get the traffic GPS data and prepare it into a csv file.
-3. Run the ［*DrawMap.ipynb*] to preprocess the data and the output is a JSON file for plotting the map.
+3. Run the [*DrawMap.ipynb*](https://github.com/SarahDai/drawmap/blob/SarahDai-patch-1/DrawMap.ipynb) to preprocess the data and the output is a JSON file for plotting the map.
 
 # Run the app
 
