@@ -32,5 +32,5 @@ Click the Export Button, the page will freeze since converting an svg to png is 
 Wait a few seconds and the old svg will be replaced by a png.
 
 Then right click the page and select "save image as" and you will get the map!
-![image](https://github.com/sbvictory/befit-workout/blob/master/readmeimages/login.jpg)
+![image](https://github.com/SarahDai/drawmap/blob/master/dashmap/instructionimage/save.jpg)
 
