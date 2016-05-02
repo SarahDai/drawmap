@@ -28,8 +28,7 @@ Analyze the Taxicab GPS data to count on each taxi’s influence on the traffic 
 When you go to the localhost:3000, the data begins loading and wait until map shows. It may take like 1 minitues.
 
 ## Export
-Click the Export Button, the page will freeze since converting an svg to png is not an asychoronous operation.
-Wait a few seconds and the old svg will be replaced by a png.
+Click the Export Button. Since transform a svg to png also requires a long time, a page that tells you the data is processing will appear. Wait until this page disappear. The old svg will be replaced by a png.
 
 Then right click the page and select "save image as" and you will get the map!
 ![image](https://github.com/SarahDai/drawmap/blob/master/dashmap/instructionimage/save.jpg)
