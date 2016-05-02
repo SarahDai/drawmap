@@ -72,9 +72,7 @@
 
         $("#overlay").show();
 
-        // var file = "data/output_taxi.json";
-        // var file = "data/output_taxi_0_3304.json";
-        var file = "data/output_taxi_go.json";
+        var file = "data/output_taxi_0_3304.json";
 
         d3.json(file, function (error, data) {
 
@@ -163,26 +161,38 @@
         // Create the export function - this will just export
         // the first svg element it finds
         function svgToCanvas() {
-            // Select the first svg element
-            var svg = d3.select("svg")[0][0],
-                    img = new Image(),
-                    serializer = new XMLSerializer(),
-                    svgStr = serializer.serializeToString(svg);
 
-            img.src = 'data:image/svg+xml;base64,' + window.btoa(svgStr);
 
-            // You could also use the actual string without base64 encoding it:
-            //img.src = "data:image/svg+xml;utf8," + svgStr;
+            $("#overlay").show();
 
-            $("#dash-map").remove();
+            setTimeout(function () {
+                // Select the first svg element
+                var svg = d3.select("svg")[0][0],
+                        img = new Image(),
+                        serializer = new XMLSerializer(),
+                        svgStr = serializer.serializeToString(svg);
 
-            var canvas = document.createElement("canvas");
-            document.body.appendChild(canvas);
+                img.src = 'data:image/svg+xml;base64,' + window.btoa(svgStr);
 
-            canvas.width = width;
-            canvas.height = height;
-            canvas.getContext("2d").drawImage(img, 0, 0, width, height);
-            // Now save as png or whatever
+                // You could also use the actual string without base64 encoding it:
+                //img.src = "data:image/svg+xml;utf8," + svgStr;
+
+                $("#dash-map").remove();
+
+                var canvas = document.createElement("canvas");
+                document.body.appendChild(canvas);
+
+                canvas.width = width;
+                canvas.height = height;
+                canvas.getContext("2d").drawImage(img, 0, 0, width, height);
+                // Now save as png or whatever
+
+                $("#overlay").hide();
+
+                $("#export-btn").remove();
+
+            }, 1000);
+
         };
     });
 
