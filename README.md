@@ -1,21 +1,26 @@
 # Drawmap
-Use the Taxicab GPS data to count on each taxi’s influence on the traffic and use different color to visualize the degree and plot the road system on map
+Analyze the Taxicab GPS data to count on each taxi’s influence on the traffic and use different colors to visualize the degree and plot the road system on map
+
+#Get the JSON file for plotting
+1. Get the map GPS data for the intereted city from the [*OpenStreetMap*](http://www.openstreetmap.org/export#map=13/22.5750/114.1050) by defining the bounding box of the city and export into a xml file.
+2. Get the traffic GPS data and prepare it into a csv file.
+3. Run the ［*DrawMap.ipynb*](https://github.com/SarahDai/drawmap/blob/SarahDai-patch-1/DrawMap.ipynb）to preprocess the data and the output is a JSON file for plotting the map.
 
 # Run the app
 
-1. install [*NODEJS*](https://nodejs.org/en/download/) first, select the version that matches your environment, then go to the directory of the project.
-2. install dependencies, you should finish this step without any issue
+1. Install [*NODEJS*](https://nodejs.org/en/download/) first, select the version that matches your environment, then go to the directory of the project.
+2. Install dependencies, you should finish this step without any issue
   
   ```sh
     npm install
   ```
   
-3. start the node server, wait until see "Example app listening on port 3000!" in your console.
+3. Start the node server, wait until see "Example app listening on port 3000!" in your console.
 
   ```sh
     node server
   ```
-4. hit localhost:3000  
+4. Hit localhost:3000  
 
 # Use the app
 ## Generate the map
