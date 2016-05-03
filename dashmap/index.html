@@ -50,10 +50,11 @@
                 .attr("height", height + margin.top + margin.bottom);
 
         var legendData = svg.selectAll('.legendData')
-                .data([{'name': '>45', 'color': '#66ccff'},
-                    {'name': '>30', 'color': '#ff9980'},
-                    {'name': '>15', 'color': '#80ff80'},
-                    {'name': '>0', 'color': '#d1d1e0'}])
+                .data([{'name': '>=61', 'color': '#ff3300'},
+                    {'name': '>=30', 'color': '#e600e6'},
+                    {'name': '>=11', 'color': '#80ff80'},
+                    {'name': '>=1', 'color': '#00ff00'},
+                    {'name': '=0', 'color': '#999966'}])
                 .enter().append('g')
                 .attr('class', 'legendData')
                 .attr('data-legend', function (d) {
@@ -72,7 +73,7 @@
 
         $("#overlay").show();
 
-        var file = "data/output_taxi_0_3304.json";
+        var file = "data/output_taxi.json";
 
         d3.json(file, function (error, data) {
 
