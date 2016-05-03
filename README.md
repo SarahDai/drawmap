@@ -35,5 +35,5 @@ Then right click the page and select "save image as" and you will get the map!
 
 ## Sample
 You can get a sample image here
-https://github.com/SarahDai/drawmap/blob/master/dashmap/instructionimage/sample.png
+[*Sample Image*](https://raw.githubusercontent.com/SarahDai/drawmap/master/dashmap/instructionimage/sample.png)
 
