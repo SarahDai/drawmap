@@ -33,3 +33,7 @@ Click the Export Button. Since transform a svg to png also requires a long time,
 Then right click the page and select "save image as" and you will get the map!
 ![image](https://github.com/SarahDai/drawmap/blob/master/dashmap/instructionimage/save.jpg)
 
+## Sample
+You can get a sample image here
+https://github.com/SarahDai/drawmap/blob/master/dashmap/instructionimage/sample.png
+
